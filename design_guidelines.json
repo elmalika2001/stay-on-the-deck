@@ -1,0 +1,133 @@
+{
+  "theme": {
+    "home_aesthetic": "Realistic Cinematic / Luxury Naval",
+    "log_aesthetic": "Modern IDE / Technical Documentation",
+    "global_archetype": "5 (Jewel & Luxury) & Terminal / Swiss High-Contrast hybrid"
+  },
+  "colors": {
+    "global": {
+      "ink_navy": "#0A1118",
+      "midnight_navy": "#111B24",
+      "abyss_black": "#030608",
+      "brass": "#D4AF37",
+      "antique_gold": "#B58A2D",
+      "parchment_bone": "#E8E2D2",
+      "signal_cyan": "#00E5FF",
+      "signal_teal": "#00B4D8"
+    },
+    "semantic": {
+      "success": "#10B981",
+      "warning": "#F59E0B",
+      "error": "#EF4444",
+      "info": "#00B4D8"
+    },
+    "home": {
+      "background": "#030608",
+      "surface": "#0A1118",
+      "text_primary": "#E8E2D2",
+      "text_secondary": "rgba(232, 226, 210, 0.7)",
+      "accent": "#D4AF37"
+    },
+    "log": {
+      "background": "#0A1118",
+      "sidebar_bg": "#030608",
+      "card_bg": "#111B24",
+      "text_primary": "#E8E2D2",
+      "text_secondary": "rgba(232, 226, 210, 0.6)",
+      "accent": "#00E5FF",
+      "code_bg": "#030608"
+    }
+  },
+  "typography": {
+    "pairings": {
+      "home_heading": "Cormorant Garamond",
+      "home_body": "Outfit",
+      "log_heading": "IBM Plex Mono",
+      "log_body": "Satoshi",
+      "code": "JetBrains Mono"
+    },
+    "scale": {
+      "h1": "text-5xl md:text-6xl tracking-tight leading-none",
+      "h2": "text-3xl md:text-4xl tracking-tight leading-tight",
+      "h3": "text-xl md:text-2xl tracking-normal",
+      "body": "text-base leading-relaxed",
+      "small": "text-sm tracking-wider uppercase",
+      "code": "text-sm font-mono tracking-tight"
+    }
+  },
+  "layouts": {
+    "home": {
+      "structure": "Single-page long-scroll cinematic journey",
+      "sections": [
+        "Hero: Full viewport, cinematic moody deep sea image overlay with noise, max background opacity 40%, large center typography in Cormorant Garamond.",
+        "Beat 1: Scroll-triggered parallax text reveal, introducing the narrative. Wide asymmetric padding.",
+        "Beat 2: Brass metallic accents highlighting key metrics or philosophy. Use grid bento box strategy.",
+        "Beat 3: Deep ocean layered visual, depth-shift morph transition area.",
+        "Footer: Minimalistic bottom anchor with massive typographic logo."
+      ],
+      "visual_effects": "Film-grain overlay (fixed pointer-events-none z-50), smooth scroll (Lenis required), parallax images via Framer Motion."
+    },
+    "log": {
+      "structure": "Two-column IDE style",
+      "sidebar": "Fixed width w-64 or w-72, abyss_black bg. Collapsible PARA category accordion. Minimal styling, strict alignment.",
+      "main_pane": "Scrollable flex/grid container, midnight_navy bg, top search bar, tag filter chips.",
+      "cards": "Cardless or subtle 1px border (#D4AF37/20), sharp edges. Hover state: signal cyan glow or 2px left-border highlight, slight background lighten.",
+      "empty_state": "Monospace 'Directory empty' message with blinking cursor or ASCII art."
+    }
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-brass text-abyss_black font-bold uppercase tracking-widest hover:bg-antique_gold transition-all duration-300 rounded-none px-6 py-3",
+      "ghost": "border border-brass/50 text-brass hover:bg-brass/10 transition-all duration-300 rounded-none px-6 py-3"
+    },
+    "search_input": "IDE command palette style: w-full max-w-md bg-abyss_black border border-parchment_bone/20 text-parchment_bone focus:border-signal_cyan focus:ring-1 focus:ring-signal_cyan font-mono rounded-none px-4 py-2",
+    "tag_chips": "px-3 py-1 text-xs font-mono rounded-full border border-signal_teal/30 bg-signal_teal/10 text-signal_cyan whitespace-nowrap overflow-hidden text-ellipsis max-w-full",
+    "markdown": {
+      "headings": "text-parchment_bone font-mono mb-4 mt-8 tracking-tight",
+      "paragraphs": "text-parchment_bone/80 leading-relaxed mb-4 font-sans",
+      "code_blocks": "bg-abyss_black p-4 rounded-none border-l-2 border-signal_cyan font-mono text-sm overflow-x-auto my-6",
+      "inline_code": "bg-midnight_navy px-1.5 py-0.5 rounded-none text-signal_cyan font-mono text-sm"
+    }
+  },
+  "transitions": {
+    "route_shift": "Water-ripple or depth-shift morph transition between '/' and '/log'. Use Framer Motion for a page-level unmasking effect where the cinematic ocean view descends/fades into a command console grid."
+  },
+  "media": {
+    "textures": {
+      "film_grain": "CSS implementation: Create an SVG noise filter overlay, apply it to a fixed div covering viewport, set mix-blend-mode: overlay, pointer-events: none, opacity: 0.08 - 0.12."
+    },
+    "image_urls": [
+      {
+        "url": "https://images.unsplash.com/photo-1621451787112-888885307a8c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNTl8MHwxfHNlYXJjaHwzfHxtb29keSUyMGRlZXAlMjBzZWElMjBvY2VhbnxlbnwwfHx8fDE3NzcwNjg2NjR8MA&ixlib=rb-4.1.0&q=85",
+        "category": "home_hero",
+        "description": "Close up of dark moody ocean waves, perfect for the hero section background with overlay."
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1672186466193-d3f05e40f112?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2OTV8MHwxfHNlYXJjaHwzfHx2aW50YWdlJTIwYnJhc3MlMjBjb21wYXNzJTIwbmF2aWdhdGlvbnxlbnwwfHx8fDE3NzcwNjg2NjR8MA&ixlib=rb-4.1.0&q=85",
+        "category": "scroll_beat_1",
+        "description": "Vintage brass compass on wooden surface, representing navigation and depth."
+      },
+      {
+        "url": "https://images.pexels.com/photos/25811744/pexels-photo-25811744.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "category": "scroll_beat_2",
+        "description": "Moody dark sea waves for deep scroll parallax depth."
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1769776400503-6ad467d68ac3?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2OTV8MHwxfHNlYXJjaHwxfHx2aW50YWdlJTIwYnJhc3MlMjBjb21wYXNzJTIwbmF2aWdhdGlvbnxlbnwwfHx8fDE3NzcwNjg2NjR8MA&ixlib=rb-4.1.0&q=85",
+        "category": "scroll_beat_3",
+        "description": "Antique brass compass with open lid on dark surface."
+      }
+    ]
+  },
+  "testing": {
+    "data_testid_conventions": {
+      "navigation": "nav-link-{destination}",
+      "search": "ide-search-input",
+      "tag_filter": "tag-chip-{tag_name}",
+      "para_folder": "para-folder-{folder_name}",
+      "post_card": "post-card-{post_id}",
+      "markdown_view": "markdown-post-view"
+    }
+  },
+  "instructions_to_main_agent": "Implement this hybrid architecture with React Router. Route '/' uses pure HTML/Tailwind with Lenis scroll, Framer Motion, and luxury typography (no rigid Shadcn cards). Route '/log' uses heavily customized Shadcn components for the IDE layout (sidebar, search, cards). Ensure 'data-testid' are placed on all interactive items. Fonts and colors MUST follow these JSON tokens exactly. Extract markdown frontmatter tags correctly to match the tag chips styling."
+}
