@@ -248,6 +248,52 @@ body {
   color: #00b4d8 !important;
 }
 
+/* Photo treatment — bring vivid photos into the naval palette */
+.photo-naval {
+  filter: saturate(0.7) contrast(1.05) brightness(0.88);
+  position: relative;
+}
+.photo-naval::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(3, 6, 8, 0.15) 0%, rgba(10, 17, 24, 0.35) 100%);
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+.photo-portrait {
+  filter: saturate(0.85) contrast(1.05) brightness(0.95);
+}
+.photo-frame {
+  position: relative;
+  overflow: hidden;
+}
+.photo-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  pointer-events: none;
+  z-index: 2;
+}
+.photo-caption {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: rgba(212, 175, 55, 0.7);
+  padding-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.photo-caption::before {
+  content: "";
+  width: 24px;
+  height: 1px;
+  background: rgba(212, 175, 55, 0.6);
+}
+
 /* Vignette overlay for hero */
 .vignette::after {
   content: "";

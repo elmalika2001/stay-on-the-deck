@@ -36,9 +36,10 @@ User-confirmed scope (2026-01-15):
   - Tailwind extended with naval tokens (`ink-navy`, `abyss-black`, `brass`,
     `parchment`, `signal-cyan`, `signal-teal`).
 
-## Implemented (2026-01-15)
-- Cinematic Naval Depth home with hero + 4 scroll beats (manifesto, compass/PARA,
-  JFK quote, CTA) + footer.
+## Implemented (2026-01-15 → 2026-01-16)
+
+### v1 — scaffold
+- Cinematic Naval Depth home with hero + scroll beats + footer.
 - IDE-style `/log` with PARA sidebar explorer, command-palette search input,
   tag filter chips, seed banner, section-grouped post cards.
 - Single-post view with breadcrumb, frontmatter tag badges, rendered Markdown
@@ -48,11 +49,34 @@ User-confirmed scope (2026-01-15):
 - Graceful seed-mode when repo is empty (explicit banner indicates seed data).
 - 100% backend + 100% frontend tests passing (iteration_1.json).
 
+### v2 — Sara's story (personal pass)
+- Replaced anonymous naval narrative with Sara Abouelkassem's real journey:
+  AASTMT Marine Navigation → 42 Abu Dhabi software cadet → between ports.
+- 5 personal photos integrated and locally hosted at
+  `/app/frontend/public/assets/`:
+  - `portrait.jpg` — hero portrait (Plate 01).
+  - `campus.png` — 42 Abu Dhabi facade (Plate 02 · "the new harbor").
+  - `cohort.jpg` — cohort with certificates (Plate 03 · "the crew").
+  - `hacksphere.jpg` — GISEC HackSphere (Plate 04 · VISITOR badge intact).
+  - `google-security.jpg` — Google Cloud Security booth (Plate 05 · landfall).
+- Photo treatment via `.photo-naval` CSS class — saturate(0.7) + contrast +
+  navy multiply overlay — to harmonize vivid event photos with the moody palette
+  while keeping the portrait luminous.
+- New scroll structure: I Origin → II The Harbor → III Fellow Voyagers
+  → IV Logbook · On Failure (the 11 / 02 / 01 stats + "stay on deck" passage)
+  → V Making Port → VI Descend.
+- Coordinates updated to Abu Dhabi (N 24°28′ · E 54°22′).
+- Footer signature: "Stay on deck. — Sara Abouelkassem".
+
 ## User personas
-- **Sailor-writer (primary)**: keeps long-form notes in a Git-versioned PARA vault,
-  wants a portfolio that *is* the vault — no double entry.
-- **Curious visitor**: reads the cinematic home, descends to the log, scans by
-  tag and folder, opens individual entries.
+- **Sara (owner)**: 42 Abu Dhabi cadet, ex-marine-navigation student, currently
+  between ports. Wants the site to honor the full arc — including the eleven
+  rank-2 attempts and the black hole — as a story that might help someone else
+  navigating the same waters.
+- **Recruiter / mentor visitor**: sees the cinematic story first, then descends
+  into `/log` to verify substance via real, dated, tagged technical entries.
+- **Fellow cadet in the dark**: lands on the failure logbook entry, reads "stay
+  on deck", maybe doesn't quit that night.
 
 ## Prioritized backlog
 - **P0 (done)**: Cinematic home, PARA `/log` with search + tags, Markdown render,
