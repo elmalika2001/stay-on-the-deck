@@ -248,6 +248,38 @@ body {
   color: #00b4d8 !important;
 }
 
+/* RTL — Arabic */
+body.rtl {
+  font-family: "Tajawal", "Cairo", "Outfit", system-ui, sans-serif;
+}
+body.rtl .font-serif,
+body.rtl h1,
+body.rtl h2,
+body.rtl h3,
+body.rtl blockquote {
+  font-family: "Cairo", "Tajawal", "Cormorant Garamond", serif;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+}
+body.rtl .prose-ide p,
+body.rtl p,
+body.rtl .font-sans {
+  font-family: "Tajawal", "Cairo", "Outfit", sans-serif;
+  letter-spacing: 0;
+}
+body.rtl .font-mono {
+  font-family: "IBM Plex Mono", "Tajawal", monospace;
+  letter-spacing: 0.12em;
+}
+/* Don't flip the big serif title in RTL */
+body.rtl [data-testid="hero-title"] {
+  direction: ltr;
+}
+/* Brand link keeps LTR order so anchor stays adjacent to NAVAL */
+body.rtl [data-testid="nav-link-home"] {
+  direction: ltr;
+}
+
 /* Photo treatment — bring vivid photos into the naval palette */
 .photo-naval {
   filter: saturate(0.7) contrast(1.05) brightness(0.88);
@@ -262,7 +294,36 @@ body {
   mix-blend-mode: multiply;
 }
 .photo-portrait {
-  filter: saturate(0.85) contrast(1.05) brightness(0.95);
+  filter: saturate(0.4) contrast(1.05) brightness(0.85);
+  opacity: 0.72;
+}
+/* Portrait dissolves into the deep — soft radial edge fade */
+.portrait-fade {
+  -webkit-mask-image: radial-gradient(
+    ellipse 75% 85% at 50% 42%,
+    rgba(0, 0, 0, 1) 30%,
+    rgba(0, 0, 0, 0.5) 70%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-image: radial-gradient(
+    ellipse 75% 85% at 50% 42%,
+    rgba(0, 0, 0, 1) 30%,
+    rgba(0, 0, 0, 0.5) 70%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+.portrait-fade::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 17, 24, 0.15) 0%,
+    rgba(3, 6, 8, 0.55) 100%
+  );
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  z-index: 1;
 }
 .photo-frame {
   position: relative;

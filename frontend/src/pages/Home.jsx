@@ -9,7 +9,9 @@ import {
   GraduationCap,
   Users,
   Globe2,
+  BookOpen,
 } from "lucide-react";
+import { useLang } from "../contexts/LangContext";
 
 const SEA_HERO =
   "https://images.unsplash.com/photo-1621451787112-888885307a8c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNTl8MHwxfHNlYXJjaHwzfHxtb29keSUyMGRlZXAlMjBzZWElMjBvY2VhbnxlbnwwfHx8fDE3NzcwNjg2NjR8MA&ixlib=rb-4.1.0&q=85";
@@ -35,6 +37,7 @@ function SmallLabel({ children, testid }) {
 }
 
 export default function Home() {
+  const { t, lang } = useLang();
   const heroRef = useRef(null);
   const { scrollY } = useScroll();
   const heroY = useTransform(scrollY, [0, 800], [0, 200]);
@@ -48,7 +51,7 @@ export default function Home() {
 
   return (
     <div className="bg-abyss-black text-parchment min-h-screen" data-testid="home-root">
-      {/* ======================= HERO ======================= */}
+      {/* HERO */}
       <section
         ref={heroRef}
         className="relative min-h-screen w-full overflow-hidden vignette"
@@ -58,11 +61,7 @@ export default function Home() {
           style={{ y: heroY, scale: heroScale, opacity: heroOpacity }}
           className="absolute inset-0"
         >
-          <img
-            src={SEA_HERO}
-            alt="Moody deep sea"
-            className="w-full h-full object-cover opacity-45"
-          />
+          <img src={SEA_HERO} alt="" className="w-full h-full object-cover opacity-45" />
           <div className="absolute inset-0 bg-gradient-to-b from-abyss-black/70 via-abyss-black/40 to-abyss-black" />
         </motion.div>
 
@@ -73,12 +72,8 @@ export default function Home() {
             transition={{ duration: 1.2 }}
             className="flex items-center justify-between"
           >
-            <SmallLabel testid="hero-coord-label">
-              N 24° 28′ · E 54° 22′ · Abu Dhabi
-            </SmallLabel>
-            <SmallLabel testid="hero-edition-label">
-              Logbook · Edition MMXXVI
-            </SmallLabel>
+            <SmallLabel testid="hero-coord-label">{t("hero.coords")}</SmallLabel>
+            <SmallLabel testid="hero-edition-label">{t("hero.edition")}</SmallLabel>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-end pt-12">
@@ -90,7 +85,7 @@ export default function Home() {
                 className="font-mono text-[10px] uppercase tracking-[0.3em] text-brass/70 mb-4"
                 data-testid="hero-name-tag"
               >
-                — Sara Abouelkassem
+                {t("hero.name")}
               </motion.div>
               <motion.h1
                 initial={{ opacity: 0, y: 40 }}
@@ -99,7 +94,8 @@ export default function Home() {
                 className="font-serif text-[16vw] md:text-[10.5vw] leading-[0.88] tracking-tight text-parchment"
                 data-testid="hero-title"
               >
-                Naval<span className="italic font-light text-brass"> Depth</span>
+                {t("hero.title_a")}
+                <span className="italic font-light text-brass"> {t("hero.title_b")}</span>
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
@@ -108,11 +104,11 @@ export default function Home() {
                 className="mt-6 md:mt-8 max-w-2xl text-base md:text-lg text-parchment/80 leading-relaxed"
                 data-testid="hero-subtitle"
               >
-                I once trained to navigate ships at the Arab Academy for Science,
-                Technology &amp; Maritime Transport. Now I'm learning to navigate
-                systems at <span className="text-brass">42 Abu Dhabi</span>.
+                {t("hero.subtitle")}{" "}
+                <span className="text-brass">42 Abu Dhabi</span>
+                {t("hero.subtitle_after")}
                 <br className="hidden md:block" />
-                This is the logbook in between.
+                {t("hero.subtitle_line2")}
               </motion.p>
 
               <motion.div
@@ -122,45 +118,40 @@ export default function Home() {
                 className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-[10px] uppercase tracking-[0.25em] text-parchment/55"
               >
                 <span>
-                  <span className="text-brass/80">Past ·</span> Marine Navigation,
-                  AASTMT
+                  <span className="text-brass/80">{t("hero.tag.past")} ·</span>{" "}
+                  {t("hero.tag.past_v")}
                 </span>
                 <span className="hidden md:inline text-parchment/20">/</span>
                 <span>
-                  <span className="text-brass/80">Now ·</span> Software Cadet,
-                  42 Abu Dhabi
+                  <span className="text-brass/80">{t("hero.tag.now")} ·</span>{" "}
+                  {t("hero.tag.now_v")}
                 </span>
                 <span className="hidden md:inline text-parchment/20">/</span>
                 <span>
-                  <span className="text-brass/80">Course ·</span> Choosing the
-                  next port
+                  <span className="text-brass/80">{t("hero.tag.course")} ·</span>{" "}
+                  {t("hero.tag.course_v")}
                 </span>
               </motion.div>
             </div>
 
-            {/* Portrait card */}
+            {/* Portrait — emerging from the deep */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1.4, delay: 0.6, ease: [0.19, 1, 0.22, 1] }}
+              transition={{ duration: 1.6, delay: 0.6, ease: [0.19, 1, 0.22, 1] }}
               style={{ y: portraitY }}
               className="md:col-span-4 order-1 md:order-2 max-w-xs md:max-w-none mx-auto md:mx-0 w-full"
               data-testid="hero-portrait"
             >
-              <div className="photo-frame relative aspect-[3/4] w-full">
+              <div className="portrait-fade relative aspect-[3/4] w-full">
                 <img
                   src={PORTRAIT}
-                  alt="Sara Abouelkassem — portrait at 42 Abu Dhabi"
+                  alt="Sara Abouelkassem"
                   className="w-full h-full object-cover photo-portrait"
                 />
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-abyss-black via-abyss-black/40 to-transparent p-4 z-[3]">
-                  <div className="font-mono text-[9px] uppercase tracking-[0.3em] text-brass/80">
-                    Plate 01 · 42 AD · 2025
-                  </div>
-                  <div className="font-serif text-xl text-parchment leading-tight mt-1">
-                    Sara A.
-                  </div>
-                </div>
+              </div>
+              <div className="mt-4 font-mono text-[9px] uppercase tracking-[0.3em] text-brass/60 text-center md:text-start">
+                {t("hero.plate")}
               </div>
             </motion.div>
           </div>
@@ -177,7 +168,7 @@ export default function Home() {
                 strokeWidth={1.5}
               />
               <span className="font-mono text-[11px] uppercase tracking-[0.3em]">
-                Scroll — descend
+                {t("hero.scroll")}
               </span>
             </div>
             <Link
@@ -187,7 +178,7 @@ export default function Home() {
             >
               <Compass className="w-4 h-4" strokeWidth={1.5} />
               <span className="font-mono text-[11px] uppercase tracking-[0.3em]">
-                Read the log
+                {t("hero.cta")}
               </span>
               <ArrowUpRight
                 className="w-3.5 h-3.5 -translate-y-px group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
@@ -198,17 +189,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ======================= BEAT 1 — origin / two oceans ======================= */}
+      {/* BEAT 1 — origin */}
       <section
         className="relative px-6 md:px-16 py-28 md:py-40 border-t border-brass/10"
         data-testid="beat-origin"
       >
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
           <div className="md:col-span-3">
-            <SmallLabel testid="beat1-chapter">Chapter I · Origin</SmallLabel>
+            <SmallLabel testid="beat1-chapter">{t("b1.chapter")}</SmallLabel>
             <div className="mt-3 flex items-center gap-2 text-parchment/40 font-mono text-[10px] uppercase tracking-[0.25em]">
               <Anchor className="w-3 h-3" strokeWidth={1.5} />
-              <span>Two oceans</span>
+              <span>{t("b1.tag")}</span>
             </div>
           </div>
           <motion.div
@@ -219,29 +210,19 @@ export default function Home() {
             className="md:col-span-9"
           >
             <h2 className="font-serif text-4xl md:text-6xl leading-[1.05] text-parchment">
-              First, the <span className="italic text-brass">sea</span>.
+              {t("b1.title_1")} <span className="italic text-brass">{t("b1.title_1_em")}</span>.
               <br />
-              Then, the <span className="italic text-brass">silicon</span>.
+              {t("b1.title_2")} <span className="italic text-brass">{t("b1.title_2_em")}</span>.
             </h2>
             <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-10 text-parchment/80 leading-relaxed text-lg max-w-4xl">
-              <p>
-                I came up studying Marine Navigation at AASTMT — charts,
-                bearings, the lonely arithmetic of getting a vessel from one
-                coordinate to another. The sea taught me a kind of patience that
-                had nothing to do with motivation.
-              </p>
-              <p>
-                The screen, it turns out, is also an ocean. Same fog. Same need
-                for reckoning. Same long stretches of nothing followed by a
-                sudden landmark. I'm not switching disciplines so much as
-                changing the ship.
-              </p>
+              <p>{t("b1.p1")}</p>
+              <p>{t("b1.p2")}</p>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* ======================= BEAT 2 — campus / new harbor ======================= */}
+      {/* BEAT 2 — harbor */}
       <section
         className="relative px-6 md:px-16 py-28 md:py-40 border-t border-brass/10 overflow-hidden"
         data-testid="beat-harbor"
@@ -255,54 +236,42 @@ export default function Home() {
             className="md:col-span-7 relative"
           >
             <div className="photo-frame aspect-[16/10] w-full">
-              <img
-                src={CAMPUS}
-                alt="42 Abu Dhabi campus at sunset"
-                className="w-full h-full object-cover photo-naval"
-              />
+              <img src={CAMPUS} alt="" className="w-full h-full object-cover photo-naval" />
             </div>
-            <div className="photo-caption">Plate 02 · 42 Abu Dhabi · the new harbor</div>
+            <div className="photo-caption">{t("b2.caption")}</div>
           </motion.div>
 
-          <div className="md:col-span-5 md:pl-6">
-            <SmallLabel testid="beat2-chapter">Chapter II · The harbor</SmallLabel>
+          <div className="md:col-span-5 md:ps-6">
+            <SmallLabel testid="beat2-chapter">{t("b2.chapter")}</SmallLabel>
             <h3 className="mt-4 font-serif text-3xl md:text-5xl leading-tight text-parchment">
-              42 Abu Dhabi —<br />
-              the harbor I sailed into.
+              {t("b2.title_1")}<br />
+              {t("b2.title_2")}
             </h3>
-            <p className="mt-6 text-parchment/75 leading-relaxed text-lg">
-              No teachers. No grades. Peer-to-peer combat with C, with
-              algorithms, with your own stamina. You build the ship while you're
-              already at sea.
-            </p>
+            <p className="mt-6 text-parchment/75 leading-relaxed text-lg">{t("b2.body")}</p>
             <div className="mt-8 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.25em] text-brass/70">
               <GraduationCap className="w-3 h-3" strokeWidth={1.5} />
-              Cadet · piscine veteran · still on deck
+              {t("b2.tag")}
             </div>
           </div>
         </div>
       </section>
 
-      {/* ======================= BEAT 3 — fellow voyagers ======================= */}
+      {/* BEAT 3 — fellowship */}
       <section
         className="relative px-6 md:px-16 py-28 md:py-40 border-t border-brass/10"
         data-testid="beat-fellowship"
       >
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-center">
-          <div className="md:col-span-5 md:pr-6 order-2 md:order-1">
-            <SmallLabel testid="beat3-chapter">Chapter III · Fellow voyagers</SmallLabel>
+          <div className="md:col-span-5 md:pe-6 order-2 md:order-1">
+            <SmallLabel testid="beat3-chapter">{t("b3.chapter")}</SmallLabel>
             <h3 className="mt-4 font-serif text-3xl md:text-5xl leading-tight text-parchment">
-              Nobody crosses<br />
-              the deep <span className="italic text-brass">alone</span>.
+              {t("b3.title_1")}<br />
+              {t("b3.title_2")} <span className="italic text-brass">{t("b3.title_2_em")}</span>.
             </h3>
-            <p className="mt-6 text-parchment/75 leading-relaxed text-lg">
-              The cohort is the ship. The certificates are landmarks, not
-              destinations. The real artifact is the people you can call at 3 AM
-              when a segfault doesn't make sense.
-            </p>
+            <p className="mt-6 text-parchment/75 leading-relaxed text-lg">{t("b3.body")}</p>
             <div className="mt-8 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.25em] text-brass/70">
               <Users className="w-3 h-3" strokeWidth={1.5} />
-              Cohort · 42 Abu Dhabi
+              {t("b3.tag")}
             </div>
           </div>
           <motion.div
@@ -313,18 +282,14 @@ export default function Home() {
             className="md:col-span-7 relative order-1 md:order-2"
           >
             <div className="photo-frame aspect-[16/11] w-full">
-              <img
-                src={COHORT}
-                alt="42 Abu Dhabi cohort with certificates"
-                className="w-full h-full object-cover photo-naval"
-              />
+              <img src={COHORT} alt="" className="w-full h-full object-cover photo-naval" />
             </div>
-            <div className="photo-caption">Plate 03 · cohort · the crew</div>
+            <div className="photo-caption">{t("b3.caption")}</div>
           </motion.div>
         </div>
       </section>
 
-      {/* ======================= BEAT 4 — logbook entry on failure ======================= */}
+      {/* BEAT 4 — logbook on failure */}
       <section
         className="relative px-6 md:px-16 py-32 md:py-52 border-t border-brass/10 overflow-hidden"
         data-testid="beat-logbook"
@@ -343,11 +308,11 @@ export default function Home() {
         <div className="relative max-w-4xl">
           <div className="flex items-center gap-3 mb-8">
             <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-brass">
-              Logbook · entry IV
+              {t("b4.label")}
             </span>
             <span className="h-px flex-1 bg-brass/30" />
             <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-parchment/50">
-              On failure
+              {t("b4.subject")}
             </span>
           </div>
 
@@ -361,10 +326,7 @@ export default function Home() {
             <span className="text-brass not-italic font-sans font-light text-5xl md:text-7xl mr-2 align-top">
               &ldquo;
             </span>
-            I have surfaced eleven times to take the same exam. I have fallen
-            back into the deep eleven times. The eleventh failure does not weigh
-            more than the first — the sea does not keep score. What it teaches
-            is patience, and patience is the navigator's only real instrument.
+            {t("b4.quote")}
           </motion.blockquote>
 
           <motion.div
@@ -375,11 +337,11 @@ export default function Home() {
             className="mt-10 grid grid-cols-3 gap-4 md:gap-8 max-w-2xl"
           >
             {[
-              { n: "11", l: "rank-2 attempts" },
-              { n: "02", l: "piscines (so far)" },
-              { n: "01", l: "black hole · survived" },
-            ].map((s) => (
-              <div key={s.l} className="border-l border-brass/40 pl-4">
+              { n: lang === "ar" ? "١١" : "11", l: t("b4.stat_1") },
+              { n: lang === "ar" ? "٠٢" : "02", l: t("b4.stat_2") },
+              { n: lang === "ar" ? "٠١" : "01", l: t("b4.stat_3") },
+            ].map((s, i) => (
+              <div key={i} className="border-s-2 border-brass/40 ps-4">
                 <div className="font-serif text-5xl md:text-6xl text-brass leading-none">
                   {s.n}
                 </div>
@@ -391,33 +353,40 @@ export default function Home() {
           </motion.div>
 
           <p className="mt-12 max-w-2xl text-parchment/75 leading-relaxed text-base md:text-lg">
-            If you're reading this in the middle of your own crossing — the
-            hundredth failed test, the rejected application, the night where
-            quitting feels reasonable —{" "}
-            <span className="text-brass">stay on deck.</span> The story is not
-            the failure. The story is that the log keeps going.
+            {t("b4.outro_1")}{" "}
+            <span className="text-brass">{t("b4.outro_em")}</span>{" "}
+            {t("b4.outro_2")}
           </p>
+
+          <Link
+            to="/story"
+            className="mt-10 inline-flex items-center gap-3 border border-brass/40 px-5 py-3 hover:bg-brass hover:text-abyss-black transition-all duration-500"
+            data-testid="beat-logbook-read-full"
+          >
+            <BookOpen className="w-4 h-4" strokeWidth={1.5} />
+            <span className="font-mono text-[11px] uppercase tracking-[0.3em]">
+              {t("b4.read_full")}
+            </span>
+          </Link>
         </div>
       </section>
 
-      {/* ======================= BEAT 5 — making port ======================= */}
+      {/* BEAT 5 — making port */}
       <section
         className="relative px-6 md:px-16 py-28 md:py-40 border-t border-brass/10"
         data-testid="beat-port"
       >
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
           <div className="md:col-span-4">
-            <SmallLabel testid="beat5-chapter">Chapter V · Making port</SmallLabel>
+            <SmallLabel testid="beat5-chapter">{t("b5.chapter")}</SmallLabel>
             <h3 className="mt-4 font-serif text-3xl md:text-5xl leading-tight text-parchment">
-              The world I'm <span className="italic text-brass">preparing</span> for.
+              {t("b5.title_1")} <span className="italic text-brass">{t("b5.title_em")}</span>{" "}
+              {t("b5.title_2")}
             </h3>
-            <p className="mt-6 text-parchment/70 leading-relaxed">
-              Industry events, security floors, conversations with the people
-              already doing the work. Not credentials. <em>Reconnaissance.</em>
-            </p>
+            <p className="mt-6 text-parchment/70 leading-relaxed">{t("b5.body")}</p>
             <div className="mt-8 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.25em] text-brass/70">
               <Globe2 className="w-3 h-3" strokeWidth={1.5} />
-              Field · GISEC · Google Cloud Security
+              {t("b5.tag")}
             </div>
           </div>
 
@@ -430,13 +399,9 @@ export default function Home() {
               className="relative"
             >
               <div className="photo-frame aspect-[3/4] w-full">
-                <img
-                  src={HACKSPHERE}
-                  alt="Sara at HackSphere · GISEC"
-                  className="w-full h-full object-cover photo-naval"
-                />
+                <img src={HACKSPHERE} alt="" className="w-full h-full object-cover photo-naval" />
               </div>
-              <div className="photo-caption">Plate 04 · HackSphere · GISEC</div>
+              <div className="photo-caption">{t("b5.cap_4")}</div>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -446,35 +411,30 @@ export default function Home() {
               className="relative sm:mt-12"
             >
               <div className="photo-frame aspect-[3/4] w-full">
-                <img
-                  src={GCLOUD}
-                  alt="Sara at Google Cloud Security booth"
-                  className="w-full h-full object-cover photo-naval"
-                />
+                <img src={GCLOUD} alt="" className="w-full h-full object-cover photo-naval" />
               </div>
-              <div className="photo-caption">Plate 05 · Google Cloud · landfall</div>
+              <div className="photo-caption">{t("b5.cap_5")}</div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* ======================= BEAT 6 — descend to log ======================= */}
+      {/* BEAT 6 — descend */}
       <section
         className="relative px-6 md:px-16 py-28 md:py-40 border-t border-brass/10"
         data-testid="beat-cta"
       >
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-end">
           <div className="md:col-span-7">
-            <SmallLabel testid="beat6-chapter">Chapter VI · Descend</SmallLabel>
+            <SmallLabel testid="beat6-chapter">{t("b6.chapter")}</SmallLabel>
             <h3 className="mt-4 font-serif text-4xl md:text-6xl leading-[1.05] text-parchment">
-              Surface ends here.
+              {t("b6.title_1")}
               <br />
-              The <span className="italic text-brass">log</span> begins below.
+              {t("b6.title_2")} <span className="italic text-brass">{t("b6.title_em")}</span>{" "}
+              {t("b6.title_3")}
             </h3>
             <p className="mt-8 max-w-xl text-parchment/70 text-lg leading-relaxed">
-              From here on, the atmosphere changes. Cormorant yields to Plex
-              Mono. Parchment to cyan. Stories become entries. Read what I'm
-              learning, the failures included.
+              {t("b6.body")}
             </p>
           </div>
           <div className="md:col-span-5 flex md:justify-end">
@@ -485,7 +445,7 @@ export default function Home() {
             >
               <Compass className="w-5 h-5" strokeWidth={1.5} />
               <span className="font-mono text-xs uppercase tracking-[0.3em] font-semibold">
-                Descend to /log
+                {t("b6.cta")}
               </span>
               <ArrowUpRight
                 className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
@@ -496,7 +456,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ======================= FOOTER ======================= */}
+      {/* FOOTER */}
       <footer
         className="relative px-6 md:px-16 py-16 border-t border-brass/10"
         data-testid="home-footer"
@@ -504,16 +464,16 @@ export default function Home() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div>
             <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-brass/70 mb-3">
-              — Sara Abouelkassem
+              {t("footer.author")}
             </div>
-            <div className="font-serif text-6xl md:text-9xl leading-none text-parchment/30">
-              Stay&nbsp;on&nbsp;deck.
+            <div className="font-serif text-5xl md:text-8xl leading-none text-parchment/30">
+              {t("footer.signoff")}
             </div>
           </div>
           <div className="flex flex-col gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-parchment/50">
-            <div>Soundings · MMXXVI</div>
+            <div>{t("footer.edition")}</div>
             <div>
-              Logbook on GitHub ·{" "}
+              {t("footer.repo")} ·{" "}
               <a
                 href="https://github.com/elmalika2001/port"
                 target="_blank"

@@ -49,7 +49,30 @@ User-confirmed scope (2026-01-15):
 - Graceful seed-mode when repo is empty (explicit banner indicates seed data).
 - 100% backend + 100% frontend tests passing (iteration_1.json).
 
-### v2 — Sara's story (personal pass)
+### v3 — Story route + bilingual (EN / AR)
+- New `/story` longform route with the full eleventh-attempt essay
+  (`src/pages/Story.jsx`). Cinematic naval atmosphere, scroll-revealed sections,
+  pull-quote treatment for the central "eleven attempts is not a story about
+  failure" line.
+- Full **EN ↔ AR** language toggle in the navbar (`<LangToggle />`) backed by:
+  - `src/i18n/translations.js` — keyed dictionary covering Home + Story + nav.
+  - `src/contexts/LangContext.jsx` — provider, `useLang()` hook, `localStorage`
+    persistence, `dir="rtl"` + `lang="ar"` on `<html>`, `body.rtl` class.
+  - Cairo + Tajawal Google Fonts loaded for proper Arabic rendering.
+  - Targeted RTL CSS so headings use Cairo, body uses Tajawal, font-mono keeps
+    IBM Plex Mono for Latin technical strings.
+  - Brand link and hero title kept LTR to preserve their typographic identity.
+- Portrait treatment refined per Sara's feedback: opacity 0.72, heavy
+  desaturation, radial edge-fade mask (`.portrait-fade`) — she now emerges
+  from the deep instead of sitting on top of it. Frame border + on-image plate
+  caption removed; caption moved underneath as a quiet monospace line.
+- Logbook beat now links to `/story` via "Read the full story" button.
+- Numbers in the failure stats (11 / 02 / 01) auto-convert to Arabic-Indic
+  numerals (١١ / ٠٢ / ٠١) when language is AR.
+
+### Implemented (2026-01-15 → 2026-01-16) — earlier passes
+
+
 - Replaced anonymous naval narrative with Sara Abouelkassem's real journey:
   AASTMT Marine Navigation → 42 Abu Dhabi software cadet → between ports.
 - 5 personal photos integrated and locally hosted at
