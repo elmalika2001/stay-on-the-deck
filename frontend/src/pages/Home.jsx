@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
@@ -17,6 +17,12 @@ const SEA_HERO =
   "https://images.unsplash.com/photo-1621451787112-888885307a8c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNTl8MHwxfHNlYXJjaHwzfHxtb29keSUyMGRlZXAlMjBzZWElMjBvY2VhbnxlbnwwfHx8fDE3NzcwNjg2NjR8MA&ixlib=rb-4.1.0&q=85";
 const DEEP_SEA =
   "https://images.pexels.com/photos/25811744/pexels-photo-25811744.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940";
+
+const PORTRAIT_MAP = {
+  original: "/assets/portrait.jpg",
+  cutout: "/assets/portrait-cutout.png",
+  atmospheric: "/assets/portrait-atmospheric.png",
+};
 
 const PORTRAIT = "/assets/portrait.jpg";
 const CAMPUS = "/assets/campus.png";
@@ -39,6 +45,21 @@ function SmallLabel({ children, testid }) {
 export default function Home() {
   const { t, lang } = useLang();
   const heroRef = useRef(null);
+  const [portraitVariant, setPortraitVariant] = useState(
+    () => (typeof window !== "undefined" && localStorage.getItem("nd_portrait_pick")) || "original"
+  );
+  useEffect(() => {
+    const onStorage = () => {
+      setPortraitVariant(localStorage.getItem("nd_portrait_pick") || "original");
+    };
+    window.addEventListener("storage", onStorage);
+    const interval = setInterval(onStorage, 1000);
+    return () => {
+      window.removeEventListener("storage", onStorage);
+      clearInterval(interval);
+    };
+  }, []);
+  const portraitSrc = PORTRAIT_MAP[portraitVariant] || PORTRAIT;
   const { scrollY } = useScroll();
   const heroY = useTransform(scrollY, [0, 800], [0, 200]);
   const heroOpacity = useTransform(scrollY, [0, 500], [1, 0.3]);
