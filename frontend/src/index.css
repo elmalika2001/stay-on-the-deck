@@ -2,114 +2,268 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --background: 210 40% 4%;
+  --foreground: 44 37% 87%;
+  --card: 210 33% 11%;
+  --card-foreground: 44 37% 87%;
+  --popover: 210 33% 11%;
+  --popover-foreground: 44 37% 87%;
+  --primary: 45 65% 52%;
+  --primary-foreground: 210 40% 4%;
+  --secondary: 210 33% 11%;
+  --secondary-foreground: 44 37% 87%;
+  --muted: 210 33% 15%;
+  --muted-foreground: 44 20% 65%;
+  --accent: 188 100% 50%;
+  --accent-foreground: 210 40% 4%;
+  --destructive: 0 72% 51%;
+  --destructive-foreground: 44 37% 87%;
+  --border: 45 30% 25%;
+  --input: 210 33% 15%;
+  --ring: 188 100% 50%;
+  --radius: 0.25rem;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  background-color: #030608;
+  color: #e8e2d2;
+}
+
 body {
-    margin: 0;
-    font-family:
-        -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-        "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-        sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  font-family: "Outfit", "Satoshi", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-code {
-    font-family:
-        source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+/* Custom selection colors to reinforce the naval/brass aesthetic */
+::selection {
+  background-color: #d4af37;
+  color: #030608;
+}
+
+/* Scrollbar — IDE feel */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #030608;
+}
+::-webkit-scrollbar-thumb {
+  background: #1a2630;
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #d4af37;
+}
+
+/* Film grain overlay — SVG noise, fixed across the viewport */
+.film-grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.1;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.75'/%3E%3C/svg%3E");
+}
+
+/* Brass underline animation */
+.brass-underline {
+  position: relative;
+}
+.brass-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 1px;
+  background: #d4af37;
+  transition: width 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.brass-underline:hover::after {
+  width: 100%;
+}
+
+/* Markdown prose — IDE theme */
+.prose-ide h1,
+.prose-ide h2,
+.prose-ide h3,
+.prose-ide h4 {
+  font-family: "IBM Plex Mono", monospace;
+  color: #e8e2d2;
+  letter-spacing: -0.01em;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+.prose-ide h1 {
+  font-size: 1.875rem;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+  padding-bottom: 0.5rem;
+}
+.prose-ide h2 {
+  font-size: 1.5rem;
+}
+.prose-ide h3 {
+  font-size: 1.2rem;
+  color: #d4af37;
+}
+.prose-ide p {
+  font-family: "Satoshi", "Outfit", sans-serif;
+  color: rgba(232, 226, 210, 0.85);
+  line-height: 1.75;
+  margin: 0.85rem 0;
+  font-size: 0.98rem;
+}
+.prose-ide a {
+  color: #00e5ff;
+  text-decoration: underline;
+  text-decoration-color: rgba(0, 229, 255, 0.35);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.2s;
+}
+.prose-ide a:hover {
+  text-decoration-color: #00e5ff;
+}
+.prose-ide strong {
+  color: #d4af37;
+  font-weight: 600;
+}
+.prose-ide em {
+  color: rgba(232, 226, 210, 0.95);
+}
+.prose-ide ul,
+.prose-ide ol {
+  margin: 0.75rem 0 1.25rem 0;
+  padding-left: 1.5rem;
+  color: rgba(232, 226, 210, 0.85);
+}
+.prose-ide li {
+  margin: 0.35rem 0;
+  line-height: 1.7;
+}
+.prose-ide ul > li::marker {
+  color: #d4af37;
+}
+.prose-ide ol > li::marker {
+  color: #00e5ff;
+  font-family: "JetBrains Mono", monospace;
+}
+.prose-ide blockquote {
+  border-left: 2px solid #d4af37;
+  background: rgba(212, 175, 55, 0.04);
+  color: rgba(232, 226, 210, 0.75);
+  padding: 0.75rem 1rem;
+  margin: 1.25rem 0;
+  font-style: italic;
+}
+.prose-ide code:not(pre code) {
+  background: #111b24;
+  color: #00e5ff;
+  padding: 0.15rem 0.4rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.85em;
+  border: 1px solid rgba(0, 229, 255, 0.15);
+}
+.prose-ide pre {
+  background: #030608 !important;
+  border-left: 2px solid #00e5ff;
+  padding: 1rem 1.25rem;
+  overflow-x: auto;
+  margin: 1.25rem 0;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+.prose-ide pre code {
+  background: transparent !important;
+  padding: 0;
+  color: #e8e2d2;
+  font-size: 0.85rem;
+}
+.prose-ide table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.25rem 0;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.85rem;
+}
+.prose-ide th,
+.prose-ide td {
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+.prose-ide th {
+  background: #111b24;
+  color: #d4af37;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+}
+.prose-ide hr {
+  border: 0;
+  border-top: 1px dashed rgba(212, 175, 55, 0.25);
+  margin: 2rem 0;
+}
+
+/* highlight.js dark theme tweaks */
+.hljs {
+  background: transparent !important;
+  color: #e8e2d2 !important;
+}
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-built_in {
+  color: #d4af37 !important;
+}
+.hljs-string,
+.hljs-attr {
+  color: #00e5ff !important;
+}
+.hljs-comment {
+  color: #5a6b78 !important;
+  font-style: italic;
+}
+.hljs-number,
+.hljs-literal {
+  color: #f59e0b !important;
+}
+.hljs-function,
+.hljs-title {
+  color: #e8e2d2 !important;
+}
+.hljs-variable,
+.hljs-name {
+  color: #00b4d8 !important;
+}
+
+/* Vignette overlay for hero */
+.vignette::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 40%,
+    rgba(3, 6, 8, 0.7) 90%,
+    #030608 100%
+  );
 }
 
 @layer base {
-    :root {
-        --background: 0 0% 100%;
-        --foreground: 0 0% 3.9%;
-        --card: 0 0% 100%;
-        --card-foreground: 0 0% 3.9%;
-        --popover: 0 0% 100%;
-        --popover-foreground: 0 0% 3.9%;
-        --primary: 0 0% 9%;
-        --primary-foreground: 0 0% 98%;
-        --secondary: 0 0% 96.1%;
-        --secondary-foreground: 0 0% 9%;
-        --muted: 0 0% 96.1%;
-        --muted-foreground: 0 0% 45.1%;
-        --accent: 0 0% 96.1%;
-        --accent-foreground: 0 0% 9%;
-        --destructive: 0 84.2% 60.2%;
-        --destructive-foreground: 0 0% 98%;
-        --border: 0 0% 89.8%;
-        --input: 0 0% 89.8%;
-        --ring: 0 0% 3.9%;
-        --chart-1: 12 76% 61%;
-        --chart-2: 173 58% 39%;
-        --chart-3: 197 37% 24%;
-        --chart-4: 43 74% 66%;
-        --chart-5: 27 87% 67%;
-        --radius: 0.5rem;
-    }
-    .dark {
-        --background: 0 0% 3.9%;
-        --foreground: 0 0% 98%;
-        --card: 0 0% 3.9%;
-        --card-foreground: 0 0% 98%;
-        --popover: 0 0% 3.9%;
-        --popover-foreground: 0 0% 98%;
-        --primary: 0 0% 98%;
-        --primary-foreground: 0 0% 9%;
-        --secondary: 0 0% 14.9%;
-        --secondary-foreground: 0 0% 98%;
-        --muted: 0 0% 14.9%;
-        --muted-foreground: 0 0% 63.9%;
-        --accent: 0 0% 14.9%;
-        --accent-foreground: 0 0% 98%;
-        --destructive: 0 62.8% 30.6%;
-        --destructive-foreground: 0 0% 98%;
-        --border: 0 0% 14.9%;
-        --input: 0 0% 14.9%;
-        --ring: 0 0% 83.1%;
-        --chart-1: 220 70% 50%;
-        --chart-2: 160 60% 45%;
-        --chart-3: 30 80% 55%;
-        --chart-4: 280 65% 60%;
-        --chart-5: 340 75% 55%;
-    }
-}
-
-@layer base {
-    * {
-        @apply border-border;
-    }
-    body {
-        @apply bg-background text-foreground;
-    }
-}
-
-@layer base {
-    [data-debug-wrapper="true"] {
-        display: contents !important;
-    }
-
-    [data-debug-wrapper="true"] > * {
-        margin-left: inherit;
-        margin-right: inherit;
-        margin-top: inherit;
-        margin-bottom: inherit;
-        padding-left: inherit;
-        padding-right: inherit;
-        padding-top: inherit;
-        padding-bottom: inherit;
-        column-gap: inherit;
-        row-gap: inherit;
-        gap: inherit;
-        border-left-width: inherit;
-        border-right-width: inherit;
-        border-top-width: inherit;
-        border-bottom-width: inherit;
-        border-left-style: inherit;
-        border-right-style: inherit;
-        border-top-style: inherit;
-        border-bottom-style: inherit;
-        border-left-color: inherit;
-        border-right-color: inherit;
-        border-top-color: inherit;
-        border-bottom-color: inherit;
-    }
+  * {
+    @apply border-border;
+  }
 }
