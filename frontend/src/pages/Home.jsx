@@ -10,6 +10,7 @@ import {
   Users,
   Globe2,
   BookOpen,
+  Pencil,
 } from "lucide-react";
 import { useLang } from "../contexts/LangContext";
 
@@ -103,7 +104,7 @@ export default function Home() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1.2, delay: 0.2 }}
-                className="font-mono text-[10px] uppercase tracking-[0.3em] text-brass/70 mb-4"
+                className="font-mono text-xs md:text-sm uppercase tracking-[0.3em] text-brass mb-4"
                 data-testid="hero-name-tag"
               >
                 {t("hero.name")}
@@ -172,11 +173,25 @@ export default function Home() {
                 <img
                   src={portraitSrc}
                   alt="Sara Abouelkassem"
-                  className={`w-full h-full object-cover ${
-                    portraitVariant === "original" ? "photo-portrait" : "portrait-edited"
+                  className={`w-full h-full ${
+                    portraitVariant === "cutout"
+                      ? "object-contain portrait-cutout-img"
+                      : portraitVariant === "atmospheric"
+                      ? "object-cover portrait-edited"
+                      : "object-cover photo-portrait"
                   }`}
                 />
               </div>
+              {/* Edit portrait — discreet pencil link */}
+              <Link
+                to="/portrait"
+                className="mt-3 inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.25em] text-parchment/40 hover:text-brass transition-colors"
+                data-testid="edit-portrait-link"
+                title="Edit portrait"
+              >
+                <Pencil className="w-3 h-3" strokeWidth={1.5} />
+                Edit portrait
+              </Link>
               <div className="mt-4 font-mono text-[9px] uppercase tracking-[0.3em] text-brass/60 text-center md:text-start">
                 {t("hero.plate")}
               </div>

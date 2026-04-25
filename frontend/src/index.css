@@ -302,6 +302,11 @@ body.rtl [data-testid="nav-link-home"] {
   filter: saturate(0.92) contrast(1.04);
   opacity: 1;
 }
+/* True transparent cutout — show subject directly on page atmosphere with subtle drop shadow */
+.portrait-cutout-img {
+  filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.6))
+    drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+}
 /* Portrait dissolves into the deep — soft radial edge fade */
 .portrait-fade {
   -webkit-mask-image: radial-gradient(

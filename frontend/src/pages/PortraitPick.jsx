@@ -12,8 +12,8 @@ const VARIANTS = [
   {
     id: "cutout",
     file: "/assets/portrait-cutout.png",
-    label: "B · Background removed",
-    desc: "Subject isolated on pure abyss-black. Cleanest, lets the page atmosphere take over.",
+    label: "B · Background removed (transparent)",
+    desc: "True alpha-channel cutout — only you, fully transparent background. The hero's existing moody sea shows through behind your shoulders. Most natural fit with the page atmosphere.",
   },
   {
     id: "atmospheric",
@@ -76,10 +76,25 @@ export default function PortraitPick() {
                 data-testid={`pick-card-${v.id}`}
               >
                 <div className="relative aspect-[3/4] w-full bg-ink-navy overflow-hidden">
+                  {/* checkerboard hint behind transparent PNGs */}
+                  {v.id === "cutout" && (
+                    <div
+                      aria-hidden
+                      className="absolute inset-0 opacity-30"
+                      style={{
+                        backgroundImage:
+                          "linear-gradient(45deg, #0a1118 25%, transparent 25%), linear-gradient(-45deg, #0a1118 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #0a1118 75%), linear-gradient(-45deg, transparent 75%, #0a1118 75%)",
+                        backgroundSize: "16px 16px",
+                        backgroundPosition: "0 0, 0 8px, 8px -8px, -8px 0px",
+                      }}
+                    />
+                  )}
                   <img
                     src={v.file}
                     alt={v.label}
-                    className="w-full h-full object-cover"
+                    className={`relative w-full h-full ${
+                      v.id === "cutout" ? "object-contain" : "object-cover"
+                    }`}
                   />
                   {active && (
                     <div className="absolute top-3 right-3 bg-brass text-abyss-black w-8 h-8 flex items-center justify-center">
