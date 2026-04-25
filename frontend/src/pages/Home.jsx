@@ -164,11 +164,17 @@ export default function Home() {
               className="md:col-span-4 order-1 md:order-2 max-w-xs md:max-w-none mx-auto md:mx-0 w-full"
               data-testid="hero-portrait"
             >
-              <div className="portrait-fade relative aspect-[3/4] w-full">
+              <div
+                className={`relative aspect-[3/4] w-full ${
+                  portraitVariant === "original" ? "portrait-fade" : ""
+                }`}
+              >
                 <img
-                  src={PORTRAIT}
+                  src={portraitSrc}
                   alt="Sara Abouelkassem"
-                  className="w-full h-full object-cover photo-portrait"
+                  className={`w-full h-full object-cover ${
+                    portraitVariant === "original" ? "photo-portrait" : "portrait-edited"
+                  }`}
                 />
               </div>
               <div className="mt-4 font-mono text-[9px] uppercase tracking-[0.3em] text-brass/60 text-center md:text-start">

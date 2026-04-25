@@ -297,6 +297,11 @@ body.rtl [data-testid="nav-link-home"] {
   filter: saturate(0.4) contrast(1.05) brightness(0.85);
   opacity: 0.72;
 }
+/* AI-edited variants: minimal treatment, they already match the mood */
+.portrait-edited {
+  filter: saturate(0.92) contrast(1.04);
+  opacity: 1;
+}
 /* Portrait dissolves into the deep — soft radial edge fade */
 .portrait-fade {
   -webkit-mask-image: radial-gradient(
