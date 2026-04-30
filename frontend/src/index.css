@@ -248,36 +248,96 @@ body {
   color: #00b4d8 !important;
 }
 
-/* RTL — Arabic */
+/* ==========================================================================
+   RTL — Arabic
+   Display / headings: Amiri (editorial serif, Naskh tradition — elegant)
+   Body / UI:          Readex Pro (humanist sans, excellent readability)
+   Mono keeps IBM Plex Mono so Latin technical strings read natively.
+   ========================================================================== */
 body.rtl {
-  font-family: "Tajawal", "Cairo", "Outfit", system-ui, sans-serif;
+  font-family: "Readex Pro", "Noto Sans Arabic", system-ui, sans-serif;
+  font-size-adjust: 0.52; /* tighten vertical rhythm for Arabic */
 }
+
 body.rtl .font-serif,
 body.rtl h1,
 body.rtl h2,
 body.rtl h3,
+body.rtl h4,
 body.rtl blockquote {
-  font-family: "Cairo", "Tajawal", "Cormorant Garamond", serif;
-  font-weight: 500;
-  letter-spacing: -0.005em;
-}
-body.rtl .prose-ide p,
-body.rtl p,
-body.rtl .font-sans {
-  font-family: "Tajawal", "Cairo", "Outfit", sans-serif;
+  font-family: "Amiri", "Noto Kufi Arabic", "Cormorant Garamond", serif;
+  font-weight: 700;
   letter-spacing: 0;
+  line-height: 1.35; /* Arabic headings need more vertical room */
+  word-break: keep-all;
+  overflow-wrap: normal;
 }
-body.rtl .font-mono {
-  font-family: "IBM Plex Mono", "Tajawal", monospace;
-  letter-spacing: 0.12em;
-}
-/* Don't flip the big serif title in RTL */
+
+/* Big hero serif display in Arabic — tighten slightly */
 body.rtl [data-testid="hero-title"] {
-  direction: ltr;
+  font-family: "Amiri", serif;
+  font-style: italic;
+  letter-spacing: 0;
+  line-height: 1;
+  direction: rtl;
 }
-/* Brand link keeps LTR order so anchor stays adjacent to NAVAL */
+
+/* Brand link keeps LTR so the anchor icon sits next to "NAVAL" naturally */
 body.rtl [data-testid="nav-link-home"] {
   direction: ltr;
+}
+
+body.rtl p,
+body.rtl .prose-ide p,
+body.rtl .font-sans {
+  font-family: "Readex Pro", "Noto Sans Arabic", "Outfit", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 2; /* Arabic breathes better with generous line-height */
+  word-spacing: 0.05em;
+}
+
+body.rtl blockquote {
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* Mono: keep Latin for code/technical, but stop enforcing huge tracking */
+body.rtl .font-mono {
+  font-family: "IBM Plex Mono", "Readex Pro", monospace;
+  letter-spacing: 0.08em;
+}
+
+/* Uppercase + wide tracking looks ugly on Arabic labels — neutralise */
+body.rtl [data-testid$="-chapter"],
+body.rtl [data-testid$="-label"],
+body.rtl [data-testid$="-coord-label"],
+body.rtl [data-testid$="-edition-label"] {
+  text-transform: none;
+  letter-spacing: 0.04em;
+  font-family: "Readex Pro", "Noto Sans Arabic", sans-serif;
+}
+
+/* Don't force uppercase on Arabic anywhere */
+body.rtl .uppercase {
+  text-transform: none;
+}
+
+/* Fix any container that has LTR-biased text alignment */
+body.rtl .text-start {
+  text-align: right;
+}
+body.rtl .text-end {
+  text-align: left;
+}
+
+/* Photo captions: softer weight + proper line-height in Arabic */
+body.rtl .photo-caption {
+  letter-spacing: 0.04em;
+  font-family: "Readex Pro", sans-serif;
+  text-transform: none;
+  font-size: 12px;
+  line-height: 1.6;
 }
 
 /* Photo treatment — bring vivid photos into the naval palette */

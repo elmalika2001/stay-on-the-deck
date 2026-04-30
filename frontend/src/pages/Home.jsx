@@ -105,7 +105,7 @@ export default function Home() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1.2, delay: 0.2 }}
-                className="font-mono text-xs md:text-sm uppercase tracking-[0.3em] text-brass mb-4"
+                className="font-mono text-[10px] uppercase tracking-[0.3em] text-brass/70 mb-4"
                 data-testid="hero-name-tag"
               >
                 {t("hero.name")}
