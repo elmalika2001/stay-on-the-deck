@@ -105,7 +105,7 @@ export default function Home() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1.2, delay: 0.2 }}
-                className="font-mono text-[10px] uppercase tracking-[0.3em] text-brass/70 mb-4"
+                className="font-mono text-xs md:text-sm uppercase tracking-[0.3em] text-brass mb-4"
                 data-testid="hero-name-tag"
               >
                 {t("hero.name")}
@@ -532,6 +532,99 @@ export default function Home() {
               </div>
               <div className="photo-caption">{t("b5.cap_5")}</div>
             </motion.div>
+          </div>
+        </div>
+
+        {/* Field ops — CTF credentials rail */}
+        <div className="mt-20 md:mt-28 max-w-6xl mx-auto" data-testid="field-ops-rail">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 items-end mb-8">
+            <div className="md:col-span-5">
+              <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-brass/80 flex items-center gap-3">
+                <span className="w-6 h-px bg-brass/60" />
+                {t("b5.ops_label")}
+              </div>
+              <h3 className="mt-3 font-serif text-3xl md:text-4xl leading-tight text-parchment">
+                {t("b5.ops_title")}
+              </h3>
+            </div>
+            <p className="md:col-span-7 text-parchment/70 leading-relaxed text-base md:text-lg">
+              {t("b5.ops_body")}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+            {[
+              {
+                img: "/assets/cert-42-ctf.png",
+                title: t("b5.op1_title"),
+                org: t("b5.op1_org"),
+                date: t("b5.op1_date"),
+                tag: "ATTACK / DEFENCE",
+              },
+              {
+                img: "/assets/cert-exploit3rs.png",
+                title: t("b5.op2_title"),
+                org: t("b5.op2_org"),
+                date: t("b5.op2_date"),
+                tag: "WORKSHOP",
+              },
+              {
+                img: null,
+                title: t("b5.op3_title"),
+                org: t("b5.op3_org"),
+                date: t("b5.op3_date"),
+                tag: "LAW ENFORCEMENT",
+                initials: "SP",
+              },
+              {
+                img: null,
+                title: t("b5.op4_title"),
+                org: t("b5.op4_org"),
+                date: t("b5.op4_date"),
+                tag: "LEADERSHIP",
+                initials: "MR",
+              },
+            ].map((op, i) => (
+              <motion.article
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: i * 0.08 }}
+                className="group relative border border-brass/15 bg-midnight-navy/40 hover:border-brass/50 transition-colors duration-500"
+                data-testid={`field-op-card-${i}`}
+              >
+                <div className="relative aspect-[16/10] overflow-hidden bg-abyss-black border-b border-brass/10">
+                  {op.img ? (
+                    <img
+                      src={op.img}
+                      alt=""
+                      className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500 photo-naval"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center">
+                      <span className="font-serif text-6xl italic text-brass/30 select-none">
+                        {op.initials}
+                      </span>
+                    </div>
+                  )}
+                  <div className="absolute top-2 left-2 font-mono text-[9px] uppercase tracking-[0.2em] text-brass bg-abyss-black/80 px-2 py-0.5 border border-brass/30">
+                    {op.tag}
+                  </div>
+                </div>
+                <div className="p-4">
+                  <div className="font-serif text-base md:text-lg text-parchment leading-tight">
+                    {op.title}
+                  </div>
+                  <div className="mt-2 text-xs text-parchment/60 leading-relaxed font-sans">
+                    {op.org}
+                  </div>
+                  <div className="mt-3 font-mono text-[10px] uppercase tracking-[0.2em] text-brass/70">
+                    {op.date}
+                  </div>
+                </div>
+              </motion.article>
+            ))}
           </div>
         </div>
       </section>
