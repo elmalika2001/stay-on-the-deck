@@ -573,6 +573,7 @@ export default function Home() {
                 title: t("b5.op3_title"),
                 org: t("b5.op3_org"),
                 date: t("b5.op3_date"),
+                note: t("b5.op3_note"),
                 tag: "LAW ENFORCEMENT",
                 initials: "SP",
               },
@@ -581,6 +582,7 @@ export default function Home() {
                 title: t("b5.op4_title"),
                 org: t("b5.op4_org"),
                 date: t("b5.op4_date"),
+                note: t("b5.op4_note"),
                 tag: "LEADERSHIP",
                 initials: "MR",
               },
@@ -619,12 +621,25 @@ export default function Home() {
                   <div className="mt-2 text-xs text-parchment/60 leading-relaxed font-sans">
                     {op.org}
                   </div>
+                  {op.note && (
+                    <div className="mt-3 pt-3 border-t border-brass/10 text-[11px] italic text-parchment/55 leading-relaxed">
+                      {op.note}
+                    </div>
+                  )}
                   <div className="mt-3 font-mono text-[10px] uppercase tracking-[0.2em] text-brass/70">
                     {op.date}
                   </div>
                 </div>
               </motion.article>
             ))}
+          </div>
+
+          {/* One-liner · additional credential */}
+          <div
+            className="mt-8 font-mono text-[11px] uppercase tracking-[0.25em] text-parchment/50 text-center"
+            data-testid="ops-more"
+          >
+            {t("b5.ops_more")}
           </div>
         </div>
       </section>
