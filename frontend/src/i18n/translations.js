@@ -6,21 +6,21 @@ const t = {
     "nav.log": "/log",
     "nav.toggle_lang": "العربية",
 
-    "hero.coords": "N 24° 28′ · E 54° 22′ · Abu Dhabi",
+    "hero.coords": "PORTS · KHORFAKKAN · DUBAI · ABU DHABI · KHORFAKKAN",
     "hero.edition": "Logbook · Edition MMXXVI",
     "hero.name": "— Sara Abouelkassem",
     "hero.title_a": "Naval",
     "hero.title_b": "Depth",
     "hero.subtitle":
-      "I once trained to navigate ships at the Arab Academy for Science, Technology & Maritime Transport. Now I'm learning to navigate systems at",
-    "hero.subtitle_after": ".",
+      "Three ports: ships at AASTMT, code at University of Dubai, rank-2 at 42 Abu Dhabi. Currently home in Khorfakkan, between crossings.",
+    "hero.subtitle_after": "",
     "hero.subtitle_line2": "This is the logbook in between.",
     "hero.tag.past": "Past",
     "hero.tag.past_v": "Marine Navigation, AASTMT",
     "hero.tag.now": "Now",
-    "hero.tag.now_v": "Software Cadet, 42 Abu Dhabi",
+    "hero.tag.now_v": "Home in Khorfakkan, between ports",
     "hero.tag.course": "Course",
-    "hero.tag.course_v": "Choosing the next port",
+    "hero.tag.course_v": "Reading the charts before the next crossing",
     "hero.scroll": "Scroll — descend",
     "hero.cta": "Read the log",
     "hero.plate": "Plate 01 · Sara A. · 42 AD · 2025",
@@ -36,24 +36,39 @@ const t = {
     "b1.p2":
       "The screen, it turns out, is also an ocean. Same fog. Same need for reckoning. Same long stretches of nothing followed by a sudden landmark. I'm not switching disciplines so much as changing the ship.",
 
-    "b2.chapter": "Chapter II · The harbor",
+    "b_dubai.chapter": "Chapter II · Dubai",
+    "b_dubai.tag": "The crossing",
+    "b_dubai.title_1": "Before the piscine,",
+    "b_dubai.title_2": "the",
+    "b_dubai.title_em": "classroom",
+    "b_dubai.title_3": "in Dubai.",
+    "b_dubai.p1":
+      "Before 42 Abu Dhabi, there was a year in Dubai that quietly taught me the alphabet of this trade — databases, forensic cybersecurity, C# and Python, diagrams in StarUML, the inside of a machine taken apart and put back together.",
+    "b_dubai.p2":
+      "I walked out of the University of Dubai with a BTEC HND Level 5 in Computer Science & Cybersecurity. It wasn't the ocean. It wasn't 42 either. It was the crossing — the place where I first learned that code is its own kind of navigation.",
+    "b_dubai.diploma_label": "Diploma · University of Dubai",
+    "b_dubai.diploma_title": "BTEC HND Level 5",
+    "b_dubai.diploma_sub": "Computer Science & Cybersecurity",
+    "b_dubai.caption": "Plate 02 · Dubai · the crossing",
+
+    "b2.chapter": "Chapter III · The harbor",
     "b2.title_1": "42 Abu Dhabi —",
     "b2.title_2": "the harbor I sailed into.",
     "b2.body":
       "No teachers. No grades. Peer-to-peer combat with C, with algorithms, with your own stamina. You build the ship while you're already at sea.",
     "b2.tag": "Cadet · piscine veteran · still on deck",
-    "b2.caption": "Plate 02 · 42 Abu Dhabi · the new harbor",
+    "b2.caption": "Plate 03 · 42 Abu Dhabi · the new harbor",
 
-    "b3.chapter": "Chapter III · Fellow voyagers",
+    "b3.chapter": "Chapter IV · Fellow voyagers",
     "b3.title_1": "Nobody crosses",
     "b3.title_2": "the deep",
     "b3.title_2_em": "alone",
     "b3.body":
       "The cohort is the ship. The certificates are landmarks, not destinations. The real artifact is the people you can call at 3 AM when a segfault doesn't make sense.",
     "b3.tag": "Cohort · 42 Abu Dhabi",
-    "b3.caption": "Plate 03 · cohort · the crew",
+    "b3.caption": "Plate 04 · cohort · the crew",
 
-    "b4.label": "Logbook · entry IV",
+    "b4.label": "Logbook · entry V",
     "b4.subject": "On failure",
     "b4.quote":
       "I have surfaced eleven times to take the same exam. I have fallen back into the deep eleven times. The eleventh failure does not weigh more than the first — the sea does not keep score. What it teaches is patience, and patience is the navigator's only real instrument.",
@@ -74,10 +89,10 @@ const t = {
     "b5.body":
       "Industry events, security floors, conversations with the people already doing the work. Not credentials. Reconnaissance.",
     "b5.tag": "Field · GISEC · Google Cloud Security",
-    "b5.cap_4": "Plate 04 · HackSphere · GISEC",
-    "b5.cap_5": "Plate 05 · Google Cloud · landfall",
+    "b5.cap_4": "Plate 05 · HackSphere · GISEC",
+    "b5.cap_5": "Plate 06 · Google Cloud · landfall",
 
-    "b6.chapter": "Chapter VI · Descend",
+    "b6.chapter": "Chapter VII · Descend",
     "b6.title_1": "Surface ends here.",
     "b6.title_2": "The",
     "b6.title_em": "log",
@@ -128,6 +143,12 @@ const t = {
       "If you are reading this on a bad night — your hundredth failed test, your rejected application, your tenth job interview that went nowhere, the silent week after a layoff — I am writing to you specifically. Stay on deck. The ocean is not personal. It is just deep, and it is fine to be slow.",
     "story.signoff": "— Sara, between ports",
     "story.back": "← Back to surface",
+    "story.h7": "VII. The one line I'd whisper to my past self.",
+    "story.p11_quote": "I failed because I didn't control the emotions I felt.",
+    "story.p12":
+      "If I could send one sentence back through the line — to the me who walked into the exam station on the first try, the fifth, the ninth — it would be that. The problem was never the code. The problem was the cortisol. I showed up to every exam in a body that was already drowning. The sea wasn't the rank-2 exam. The sea was inside my chest, and I hadn't learned to navigate it yet.",
+    "story.p13":
+      "That is the real skill 42 was trying to teach me — and the one I am still learning, now, at home in Khorfakkan.",
   },
   ar: {
     "nav.surface": "السطح",
@@ -135,21 +156,21 @@ const t = {
     "nav.log": "السجل",
     "nav.toggle_lang": "English",
 
-    "hero.coords": "خط ٢٤°٢٨′ شمالاً · ٥٤°٢٢′ شرقاً · أبوظبي",
+    "hero.coords": "موانئ · خورفكّان · دبي · أبوظبي · خورفكّان",
     "hero.edition": "كرّاسة الرحلة · إصدار ٢٠٢٦",
     "hero.name": "— سارة أبو القاسم",
     "hero.title_a": "عُمق",
     "hero.title_b": "بحري",
     "hero.subtitle":
-      "تدرّبتُ يوماً على الملاحة البحرية في الأكاديمية العربية للعلوم والتكنولوجيا والنقل البحري. واليوم أتعلّم الملاحة في الأنظمة في",
-    "hero.subtitle_after": ".",
+      "ثلاثة موانئ: سفنٌ في الأكاديمية البحرية، كودٌ في جامعة دبي، rank 2 في ٤٢ أبوظبي. حاليّاً في البيت في خورفكّان، بين العبور والعبور.",
+    "hero.subtitle_after": "",
     "hero.subtitle_line2": "وهذه هي الكرّاسة التي بينهما.",
     "hero.tag.past": "ماضٍ",
     "hero.tag.past_v": "ملاحة بحرية، الأكاديمية العربية",
     "hero.tag.now": "الآن",
-    "hero.tag.now_v": "طالبة برمجة، ٤٢ أبوظبي",
+    "hero.tag.now_v": "في البيت في خورفكّان، بين الموانئ",
     "hero.tag.course": "الوجهة",
-    "hero.tag.course_v": "اختيار الميناء التالي",
+    "hero.tag.course_v": "قراءة الخرائط قبل العبور التالي",
     "hero.scroll": "انزل — إلى الأعماق",
     "hero.cta": "اقرأ السجل",
     "hero.plate": "اللوحة ٠١ · سارة · ٤٢ أبوظبي · ٢٠٢٥",
@@ -165,24 +186,39 @@ const t = {
     "b1.p2":
       "والشاشة، اتضح، محيط أيضاً. الضباب نفسه. الحاجة نفسها للحساب. مسافات طويلة من اللاشيء يقطعها معلَم مفاجئ. لستُ أبدّل تخصصاً بقدر ما أبدّل سفينة.",
 
-    "b2.chapter": "الفصل الثاني · الميناء",
+    "b_dubai.chapter": "الفصل الثاني · دبي",
+    "b_dubai.tag": "العبور",
+    "b_dubai.title_1": "قبل الـPiscine،",
+    "b_dubai.title_2": "كان",
+    "b_dubai.title_em": "الفصل",
+    "b_dubai.title_3": "في دبي.",
+    "b_dubai.p1":
+      "قبل ٤٢ أبوظبي، كان في دبي عامٌ علّمني بهدوء أبجديّة هذه المهنة — قواعد البيانات، الأمن السيبراني الجنائي، C# وPython، مخطّطات StarUML، الآلة من الداخل تُفكَّك وتُركَّب من جديد.",
+    "b_dubai.p2":
+      "خرجتُ من جامعة دبي بدبلوم BTEC HND Level 5 في علوم الحاسوب والأمن السيبراني. لم يكن المحيط. ولم تكن ٤٢. كان العبور — المكان الذي تعلّمتُ فيه أوّلاً أنّ الكود نوعٌ آخر من الملاحة.",
+    "b_dubai.diploma_label": "دبلوم · جامعة دبي",
+    "b_dubai.diploma_title": "BTEC HND Level 5",
+    "b_dubai.diploma_sub": "علوم الحاسوب والأمن السيبراني",
+    "b_dubai.caption": "اللوحة ٠٢ · دبي · العبور",
+
+    "b2.chapter": "الفصل الثالث · الميناء",
     "b2.title_1": "٤٢ أبوظبي —",
     "b2.title_2": "الميناء الذي رسوتُ فيه.",
     "b2.body":
       "لا أساتذة. لا درجات. اشتباك ندّ-بندّ مع لغة C، مع الخوارزميات، مع طاقتك أنت. تبني السفينة وأنت بالفعل في عرض البحر.",
     "b2.tag": "طالبة · مرّت بالـPiscine · ما زالت على ظهر السفينة",
-    "b2.caption": "اللوحة ٠٢ · ٤٢ أبوظبي · الميناء الجديد",
+    "b2.caption": "اللوحة ٠٣ · ٤٢ أبوظبي · الميناء الجديد",
 
-    "b3.chapter": "الفصل الثالث · رفاق الرحلة",
+    "b3.chapter": "الفصل الرابع · رفاق الرحلة",
     "b3.title_1": "لا أحد يعبر",
     "b3.title_2": "العمق",
     "b3.title_2_em": "وحيداً",
     "b3.body":
       "الدفعة هي السفينة. الشهادات معالم لا وجهات. المنتج الحقيقي هو الناس الذين تتصل بهم في الثالثة فجراً حين لا يفسّر segfault نفسه.",
     "b3.tag": "الدفعة · ٤٢ أبوظبي",
-    "b3.caption": "اللوحة ٠٣ · الدفعة · الطاقم",
+    "b3.caption": "اللوحة ٠٤ · الدفعة · الطاقم",
 
-    "b4.label": "كرّاسة الرحلة · إدخال ٤",
+    "b4.label": "كرّاسة الرحلة · إدخال ٥",
     "b4.subject": "في الفشل",
     "b4.quote":
       "صعدتُ إلى السطح إحدى عشرة مرة لخوض الامتحان نفسه. سقطتُ إلى العمق إحدى عشرة مرة. الفشل الحادي عشر لا يزن أكثر من الأول — البحر لا يحفظ النتائج. ما يعلّمه هو الصبر، والصبر هو أداة الملاح الحقيقية الوحيدة.",
@@ -196,17 +232,17 @@ const t = {
       "القصة ليست في الفشل. القصة في أن الكرّاسة تستمر.",
     "b4.read_full": "اقرأ القصة كاملةً",
 
-    "b5.chapter": "الفصل الخامس · الرسوّ في الميناء",
+    "b5.chapter": "الفصل السادس · الرسوّ في الميناء",
     "b5.title_1": "العالم الذي",
     "b5.title_em": "أستعد",
     "b5.title_2": "له.",
     "b5.body":
       "فعاليات الصناعة، طوابق الأمن السيبراني، أحاديث مع من يعمل بالفعل. ليست شهاداتٍ. هي استطلاع.",
     "b5.tag": "الميدان · GISEC · أمن Google Cloud",
-    "b5.cap_4": "اللوحة ٠٤ · HackSphere · GISEC",
-    "b5.cap_5": "اللوحة ٠٥ · Google Cloud · رسوّ",
+    "b5.cap_4": "اللوحة ٠٥ · HackSphere · GISEC",
+    "b5.cap_5": "اللوحة ٠٦ · Google Cloud · رسوّ",
 
-    "b6.chapter": "الفصل السادس · انزل",
+    "b6.chapter": "الفصل السابع · انزل",
     "b6.title_1": "السطح ينتهي هنا.",
     "b6.title_2": "ويبدأ",
     "b6.title_em": "السجل",
@@ -256,6 +292,12 @@ const t = {
       "إن كنتَ تقرأ هذا في ليلة سيّئة — اختبارك الفاشل المئة، طلبك المرفوض، مقابلتك العاشرة التي لم تُفضِ إلى شيء، الأسبوع الصامت بعد فقدان وظيفة — أكتب لك أنت بالذات. ابقَ على ظهر السفينة. المحيط ليس شخصياً. هو فقط عميق، ولا بأس بأن تكون بطيئاً.",
     "story.signoff": "— سارة، بين الموانئ",
     "story.back": "← العودة إلى السطح",
+    "story.h7": "سابعاً. الجملة التي سأهمس بها لنفسي السابقة.",
+    "story.p11_quote": "فشلتُ لأنّني لم أسيطر على المشاعر التي شعرتُ بها.",
+    "story.p12":
+      "لو أمكنني أن أرسل جملةً واحدة عبر الخطّ — إلى نفسي التي دخلت محطّة الامتحان في المحاولة الأولى، الخامسة، التاسعة — لكانت هذه. المشكلة لم تكن في الكود يوماً. المشكلة كانت في الكورتيزول. كنتُ أدخل كلّ امتحانٍ في جسدٍ كان بالفعل يغرق. لم يكن البحر هو امتحان rank 2. كان البحر في داخل صدري، ولم أكن قد تعلّمتُ الملاحة فيه بعد.",
+    "story.p13":
+      "تلك هي المهارة الحقيقية التي كانت ٤٢ تحاول تعليمي إيّاها — والمهارة التي ما زلتُ أتعلّمها، الآن، في البيت في خورفكّان.",
   },
 };
 

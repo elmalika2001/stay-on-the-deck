@@ -136,6 +136,18 @@ export default function Story() {
             <p>{t("story.p9")}</p>
             <p className="mt-5">{t("story.p10")}</p>
           </Section>
+
+          <Section delay={0.1}>
+            <h2 className="font-serif text-2xl md:text-3xl text-brass mb-5">
+              {t("story.h7")}
+            </h2>
+            <blockquote className="mt-4 mb-8 border-s-2 border-brass ps-5 py-2 italic font-serif text-2xl md:text-3xl leading-snug text-parchment">
+              <Quote className="w-5 h-5 text-brass/70 mb-2" strokeWidth={1.5} />
+              {t("story.p11_quote")}
+            </blockquote>
+            <p>{t("story.p12")}</p>
+            <p className="mt-5 text-brass/90 italic">{t("story.p13")}</p>
+          </Section>
         </div>
 
         {/* Signoff */}

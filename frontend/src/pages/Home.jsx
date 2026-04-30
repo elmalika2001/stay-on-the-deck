@@ -11,6 +11,7 @@ import {
   Globe2,
   BookOpen,
   Pencil,
+  ScrollText,
 } from "lucide-react";
 import { useLang } from "../contexts/LangContext";
 
@@ -264,7 +265,81 @@ export default function Home() {
         </div>
       </section>
 
-      {/* BEAT 2 — harbor */}
+      {/* BEAT 2 — Dubai (the crossing) */}
+      <section
+        className="relative px-6 md:px-16 py-28 md:py-40 border-t border-brass/10"
+        data-testid="beat-dubai"
+      >
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-center">
+          <div className="md:col-span-5 order-2 md:order-1">
+            <SmallLabel testid="beat-dubai-chapter">{t("b_dubai.chapter")}</SmallLabel>
+            <div className="mt-3 flex items-center gap-2 text-parchment/40 font-mono text-[10px] uppercase tracking-[0.25em]">
+              <ScrollText className="w-3 h-3" strokeWidth={1.5} />
+              <span>{t("b_dubai.tag")}</span>
+            </div>
+            <h3 className="mt-4 font-serif text-3xl md:text-5xl leading-tight text-parchment">
+              {t("b_dubai.title_1")}
+              <br />
+              {t("b_dubai.title_2")}{" "}
+              <span className="italic text-brass">{t("b_dubai.title_em")}</span>{" "}
+              {t("b_dubai.title_3")}
+            </h3>
+            <p className="mt-6 text-parchment/80 leading-relaxed text-lg">
+              {t("b_dubai.p1")}
+            </p>
+            <p className="mt-4 text-parchment/75 leading-relaxed text-lg">
+              {t("b_dubai.p2")}
+            </p>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1.1 }}
+            className="md:col-span-7 order-1 md:order-2"
+          >
+            {/* Typographic diploma "plate" — no photo, just a credential card */}
+            <div className="relative border border-brass/25 bg-midnight-navy/40 p-8 md:p-12 overflow-hidden">
+              <div
+                className="absolute inset-0 opacity-[0.04] pointer-events-none"
+                aria-hidden
+                style={{
+                  backgroundImage:
+                    "repeating-linear-gradient(45deg, #D4AF37 0, #D4AF37 1px, transparent 1px, transparent 18px)",
+                }}
+              />
+              <div className="relative">
+                <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-brass/80 flex items-center gap-3 mb-8">
+                  <span className="w-6 h-px bg-brass/60" />
+                  {t("b_dubai.diploma_label")}
+                </div>
+                <div className="font-serif text-3xl md:text-5xl leading-tight text-parchment">
+                  {t("b_dubai.diploma_title")}
+                </div>
+                <div className="mt-2 font-serif italic text-brass text-xl md:text-2xl">
+                  {t("b_dubai.diploma_sub")}
+                </div>
+                <div className="mt-10 h-px bg-gradient-to-r from-brass/50 via-brass/15 to-transparent" />
+                <div className="mt-8 grid grid-cols-2 gap-x-6 gap-y-3 font-mono text-[11px] md:text-xs text-parchment/65">
+                  <div>// C# · Python</div>
+                  <div>// Databases</div>
+                  <div>// StarUML</div>
+                  <div>// Hardware</div>
+                  <div>// Forensic Cyber</div>
+                  <div>// Networks</div>
+                </div>
+                <div className="mt-10 font-mono text-[10px] uppercase tracking-[0.3em] text-parchment/45">
+                  University of Dubai
+                </div>
+              </div>
+            </div>
+            <div className="photo-caption">{t("b_dubai.caption")}</div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* BEAT 3 — harbor */}
       <section
         className="relative px-6 md:px-16 py-28 md:py-40 border-t border-brass/10 overflow-hidden"
         data-testid="beat-harbor"
