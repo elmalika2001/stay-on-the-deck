@@ -29,6 +29,11 @@ jobs:
       - name: Install dependencies
         run: cd frontend && npm install --legacy-peer-deps && npm install ajv@^8 --legacy-peer-deps
 
+      - name: Fix asset paths for GitHub Pages
+        run: |
+          find frontend/src -type f \( -name "*.jsx" -o -name "*.js" \) -exec \
+          sed -i 's|"/assets/|"/stay-on-the-deck/assets/|g' {} \;
+
       - name: Build
         env:
           PUBLIC_URL: /stay-on-the-deck
