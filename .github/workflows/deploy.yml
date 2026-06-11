@@ -27,7 +27,7 @@ jobs:
           node-version: 16
 
       - name: Install dependencies
-        run: cd frontend && npm install --legacy-peer-deps
+        run: cd frontend && npm install --legacy-peer-deps && npm install ajv@^8 --legacy-peer-deps
 
       - name: Build
         env:
